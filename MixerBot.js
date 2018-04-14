@@ -1,4 +1,4 @@
-//MixerBotin lähdekoodi. 
+//MixerBotin lähdekoodi. MixerBot Versio: 2.3.1
 const Discord = require('discord.js');
 const music = require('discord.js-music-v11');
 const client = new Discord.Client();
