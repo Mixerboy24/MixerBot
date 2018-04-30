@@ -15,7 +15,8 @@ Discors.js-music-v11 npm install discord.js-music-v11
 Contact: Mixerboy24#0024 // contact@mixerboy24.fi
 
 Bugs:   
+Youtube API Do not repeat each song what it adds to its playlist.   
 
-New things   
+New things:   
 
 
