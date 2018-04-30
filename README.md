@@ -12,7 +12,10 @@ Youtube-dl npm install youtube-dl
 Discors.js-music-v11 npm install discord.js-music-v11  
   
   
-Mixerboy24 [Discord server](https://discord.gg/sFyFf4n)  
+Contact: Mixerboy24#0024 // contact@mixerboy24.fi
 
+Bugs:   
+
+New things   
 
 
