@@ -1,7 +1,7 @@
 # MixerBot-DiscordBot
 MixerBot is Mixerboy24's own discord bot. (C) Mixerboy24Tech
 
-Softeare:  
+Software:  
 Node.js  
 Text editor (Visual Studio Code / Notepad++ etc)  
   
