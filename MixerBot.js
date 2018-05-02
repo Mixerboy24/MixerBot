@@ -9,6 +9,11 @@ var userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
 bot.on('ready', () => {
   console.log('MixerBot on yhdistetty serverille')
+  
+  bot.user.setStatus('dnd')
+
+  bot.user.setGame('.help | MixerBot 3.0.2')
+
 });
 
 //Mixerbotin määritykset.
