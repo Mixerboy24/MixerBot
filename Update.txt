@@ -11,3 +11,5 @@ Two new command
 .version
 .userstats
 
+Remove: 
+The music plugin had to be removed for playback due to problems. It will come back as long as we get a better api
