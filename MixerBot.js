@@ -1,80 +1,100 @@
-//MixerBotin lähdekoodi. MixerBot Versio: 2.3.1
-const Discord = require('discord.js');
-const music = require('discord.js-music-v11');
-const client = new Discord.Client();
+//MixerBotin lähdekoodi. 
+var Discord = require('discord.js');
+var fs = require('fs');
+var bot = new Discord.Client();
+
+//Userdatan määritys /Storage/userData.json tiedostoon
+
+var userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
+
+bot.on('ready', () => {
+  console.log('MixerBot on yhdistetty serverille')
+});
 
 //Mixerbotin määritykset.
 
-client.on('ready', () => {
-  console.log(`Kirjatunut sisään ${client.user.tag}!`);
+bot.on('message', message => {
 
-  client.user.setStatus('Online')
+  var sender = message.author;
+  var msg = message.content.toUpperCase();
+  var prefix = '.'
 
-   client.user.setGame('m!help | MixerBot 2.3.1')
-   
- 
+  if (sender.id === '429702143923060747') {
+    return;
+  }
+
+  //komento lista
+
+  if (msg === prefix + 'KEKSI') {
+    message.channel.send('Haluatko keksin? Ota yksi :cookie:')
+
+  }
+
+  if (msg === prefix + 'PING') {
+    message.channel.send('**MixerBot info** \n*Network* OK \n*Database* OK \n*Log* OFF \n*Palvelin:* TehomyllyV3 (Windows 10 Pro (Insider program))')
+  }
+
+  if (msg === prefix + 'HELP') {
+    message.channel.send('**MixerBotin komennot** \n**.ping** -- kertoo onko botti paikalla ja antaa server datan \n**.keksi** -- Antaa keksin \n**.rickroll** -- Tarviiko edes selventää? :D \n**.userstats** -- Kertoo montako viestiä olet lähettänyt palvelimella (2.5.2018 alkaen) \n**Dev:** Mixerboy24Tech')
+  }
+
+  if (msg === prefix + 'RICKROLL') {
+    message.channel.send('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+  }
+
+  if (msg === prefix + 'USERSTATS') {
+    message.channel.send('Olet lähettänyt **' + userData[sender.id].messagesSent + '** viestiä!')
+  }
+
+
+  //MixerBot userDatan kerääminen ja ilmoittamis komento
+
+
+
+
+     //käyttäjä kenen data kirjotetaan data tiedostoon
+  if (!userData[sender.id]) userData[sender.id] = {
+    messagesSent: 0
+  }
+     
+  userData[sender.id].messagesSent++;
+
+      //Miten MixerBot tallentaa datan tiedostoon
+  fs.writeFile('Storage/userData.json', JSON.stringify(userData), (err) => {
+       if (err) console.error(err);
+
   });
 
-//MixerBotin API tiedostot
+  //MixerBot poistaa viestin jos se ei kuulu sille kanavalle
+   
+ 
+ 
+  //Kielletyt sanat (testi)
 
-
-//MixerBotin komennot 
-
-client.on('message', msg => {
-  if (msg.content === 'm!keksi') {
-    msg.reply('haluatko keksin? Ota yksi :cookie:');
-  }
-});
-
-client.on('message', msg => {
-   if (msg.content === 'm!ping') {
-     msg.reply('**MixerBot info** \n*Network* OK \n*Database* OK \n*Log* OFF \n*Palvelin:* TehomyllyV3 (Windows 10 Pro (Insider program))');
-   }
-});
-
-client.on('message', msg => {
-  if (msg.content === 'm!help') {
-    msg.reply('**MixerBotin komennot** \n**m!ping** -- kertoo onko botti paikalla ja antaa server datan \n**m!keksi** -- Antaa keksin \n**m!rikki** -- Antaa vituiks meni kuvan \n**m!love** -- Kertoo runon :3 \nMusiikki komennot: \n**m!play** -- Hakusana tai yt url (vain #no-mic-chat ) \n**m!skip** -- Skippaa biisin \n**m!volume** -- muuttaa äänenvoimakkuuttaS');
-  }
-
-});
-
-client.on('message', msg => {
-  if (msg.content === 'm!rikki') {
-    msg.reply('https://i.imgur.com/f4PXYke.png');
-  }
-});
-
-client.on('message', msg => {
-  if (msg.content === 'm!love') {
-    msg.reply('Sä kysyit kumpaa rakastan enemmän,\nsua vai elämää.\nMä vastasin elämää.\nSä suutuit, lähdit pois,\netkä koskaan tullut takas.\nEn kerenny sanoo,\net sä oot mun elämä.')
-  }
-});
-
-//Uusi henkilö tulee palvelimelle
-//client.on('guildMemberAdd', member => {
+  if (msg.includes('HOMO')) {
+    message.delete();
+    message.author.send('Kielletty sana :( ethän jatkossa käytä näitä sanoja, ne voivat loukata jotakin')
   
-
- //      console.log('User ' + member.user.username + 'liityi juuri palvelimelle.')
-
-   //    var role = member.guild.roles.find('name', 'Jäsen');
-
-     //  member.addRole(role)
-
-//});
+  }
 
 
-//MixerBotin musiikki ominaisuus
-const Bot = new Discord.Client();
-music(Bot, {
-	prefix: 'm!',        
-	global: true,      
-	maxQueueSize: 10,   
-	clearInvoker: true, 
-    channel: 'Music'    
+
+  });
+
+//Uusi henkilö tulee palvelimelle tai lähtee palvelimelta
+bot.on('guildMemberAdd', member => {
+  console.log('User ' + member.user.username + ' liityi juuri palvelimelle.')
+
+
+  member.guild.channels.get('429695546878590976').send('**' + member.user.username + '**, Tervetuloa Miksaaja cityyn! Kerro jotain niin poliisit tarkastavat sinut ja antavat leimat että pääset pidemmälle kaupunkiin');
+  
 });
 
+bot.on('guildMemberRemove', member => {
 
+  member.guild.channels.get('429695546878590976').send('**' + member.user.username + '**, poistui Miksaaja citystä.');
+
+});
 
 //Mixerbotin Discord-apin avain. 
 Bot.login('Token')
