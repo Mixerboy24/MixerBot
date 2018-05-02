@@ -1,0 +1,13 @@
+MixerBot update list
+
+MixerBot 3.0.2 [Update 02.05.2018]
+New:
+Codepoint data / statistics systems (Storage/userData.json)
+Join and Leave message
+Prefix change m! -> .
+Removing a forbidden / offensive word and sending an info with a private message (still in development)
+
+Two new command
+.version
+.userstats
+
