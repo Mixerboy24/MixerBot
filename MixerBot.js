@@ -40,7 +40,7 @@ bot.on('message', message => {
   }
 
   if (msg === prefix + 'HELP') {
-    message.channel.send('**MixerBotin komennot** \n**.ping** -- kertoo onko botti paikalla ja antaa server datan \n**.keksi** -- Antaa keksin \n**.rickroll** -- Tarviiko edes selventää? :D \n**.userstats** -- Kertoo montako viestiä olet lähettänyt palvelimella (2.5.2018 alkaen) \n**Dev:** Mixerboy24Tech')
+    message.channel.send('**MixerBotin komennot** \n**.ping** -- kertoo onko botti paikalla ja antaa server datan \n**.keksi** -- Antaa keksin \n**.rickroll** -- Tarviiko edes selventää? :D \n**.userstats** -- Kertoo montako viestiä olet lähettänyt palvelimella (2.5.2018 alkaen) \n **.version** -- Kertoo Botin version \n**Dev:** Mixerboy24Tech')
   }
 
   if (msg === prefix + 'RICKROLL') {
@@ -50,6 +50,11 @@ bot.on('message', message => {
   if (msg === prefix + 'USERSTATS') {
     message.channel.send('Olet lähettänyt **' + userData[sender.id].messagesSent + '** viestiä!')
   }
+    
+  if (msg === prefix + 'VERSION') {
+    message.channel.send('**Version** \nMixerBot 3.0.2 \n(Last update 2.5.2018)')
+  }
+
 
 
   //MixerBot userDatan kerääminen ja ilmoittamis komento
