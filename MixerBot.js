@@ -55,7 +55,34 @@ bot.on('message', message => {
     message.channel.send('**Version** \nMixerBot 3.0.2 \n(Last update 2.5.2018)')
   }
 
+  
+  //Viestien poisto komento
+if (msg.startsWith(prefix + 'PURGE')) {
+   
+    async function purge() {
+      message.delete();
 
+      if (!message.member.roles.find('name', '**BOT ADMIN ROLE (example Admin)**')) {
+        message.channel.send('Ylläpidon komento :3 Hih :) ');
+        return;
+      }
+ 
+      if (isNaN(args[0])) {
+        message.channel.send('Montako viestiä haluat poistaa?  \n Esimerkki: ' + prefix + 'purge 3');
+        return;
+      }
+
+      var fetched = await message.channel.fetchMessages({limit: args[0]});
+      console.log(fetched.size +  ' Viestit löydetty. Poistetaan . . .' );
+
+      message.channel.bulkDelete(fetched)
+        .catch(error => message.channel.send('Virhe: ${error}'));
+    }
+
+    purge();
+
+
+  }
 
   //MixerBot userDatan kerääminen ja ilmoittamis komento
 
