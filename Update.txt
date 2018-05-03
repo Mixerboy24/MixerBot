@@ -1,5 +1,12 @@
 MixerBot update list
 
+MixerBot 3.0.2 [Update 03.05.2018]
+New: 
+Prefix change . -> _
+
+one new command
+_purge 
+
 MixerBot 3.0.2 [Update 02.05.2018]
 New:
 Codepoint data / statistics systems (Storage/userData.json)
