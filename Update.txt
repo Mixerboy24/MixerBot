@@ -1,5 +1,10 @@
 MixerBot update list
 
+Mixerbot 3.0.2 [Update 27.07.2018]
+The bot's exit notification has been changed. 
+"person x left off Mixer City" -> "Person x moved away from Mixer City"
+
+
 MixerBot 3.0.2 [Update 03.05.2018]
 New: 
 Prefix change . -> _
