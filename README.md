@@ -12,11 +12,10 @@ Discord.js voice: npm install discord.js node-opus
   
 Contact: Mixerboy24#0024 // contact@mixerboy24.fi
 
-Bugs:   
-Youtube API Do not repeat each song what it adds to its playlist. <deleted MixerBot 3.0.2 version>  
+bugs:   
+
 
 New things:   
-Join & leave message   
-Auto role   
-Automatic Ban,Kick and warning message  
+- Auto role   
+- Automatic Ban,Kick and warning message  
 
