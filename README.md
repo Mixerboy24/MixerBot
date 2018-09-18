@@ -18,4 +18,6 @@ bugs:
 New things:   
 - Auto role   
 - Automatic Ban,Kick and warning message  
+- Announces server staff that,a new member has joined <@tag e.g @staff @admin>
+- Twitch stream notification
 
