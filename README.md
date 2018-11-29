@@ -18,6 +18,7 @@ bugs:
 New things:   
 - Auto role   
 - Automatic Ban,Kick and warning message  
-- Announces server staff that,a new member has joined <@tag e.g @staff @admin>
+- Announces server staff that,a new member has joined <@tag e.g @staff @admin> [Coming Next Beta update]
 - Twitch stream notification
+- Server staff can give their members the role. Eg thumbs up or prohibition emoji
 
