@@ -7,13 +7,13 @@ var bot = new Discord.Client();
 
 var userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
+
 bot.on('ready', () => {
   console.log('MixerBot on yhdistetty serverille')
-  
+
   bot.user.setStatus('dnd')
 
-  bot.user.setGame('.help | MixerBot 3.0.2')
-
+  bot.user.setGame('_help | MixerBot 3.0.4_BETA')
 });
 
 //Mixerbotin määritykset.
@@ -22,7 +22,9 @@ bot.on('message', message => {
 
   var sender = message.author;
   var msg = message.content.toUpperCase();
-  var prefix = '.'
+  var prefix = '_'
+  var cont = message.content.slice(prefix.length).split(' ');
+  var args = cont.slice(1);
 
   if (sender.id === '429702143923060747') {
     return;
@@ -36,63 +38,39 @@ bot.on('message', message => {
   }
 
   if (msg === prefix + 'PING') {
-    message.channel.send('**MixerBot info** \n*Network* OK \n*Database* OK \n*Log* OFF \n*Palvelin:* TehomyllyV3 (Windows 10 Pro (Insider program))')
+    message.channel.send('**MixerBot info** \n*Network* ```css\n OK``` \n*Database* ```\n Error: MySQL login error``` \n*Log* ```css\n OK``` \n*Palvelin:* ```TehomyllyV3 (Windows 10 Pro (Insider program))```')
   }
 
   if (msg === prefix + 'HELP') {
-    message.channel.send('**MixerBotin komennot** \n**.ping** -- kertoo onko botti paikalla ja antaa server datan \n**.keksi** -- Antaa keksin \n**.rickroll** -- Tarviiko edes selventää? :D \n**.userstats** -- Kertoo montako viestiä olet lähettänyt palvelimella (2.5.2018 alkaen) \n **.version** -- Kertoo Botin version \n**Dev:** Mixerboy24Tech')
+    message.channel.send('**MixerBotin komennot** \n**_ping** -- kertoo onko botti paikalla ja antaa server datan \n**_keksi** -- Antaa keksin \n**_rickroll** -- Tarviiko edes selventää? :D \n**_userstats** -- Kertoo montako viestiä olet lähettänyt palvelimella (29.11.2018 alkaen) \n**_version** -- Kertoo Botin version \n*Ylläpito komennot* \n**_purge** -- poistaa viestejä (esim: _purge 2) \n**Dev:** Mixerboy24Tech')
   }
 
   if (msg === prefix + 'RICKROLL') {
     message.channel.send('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
   }
 
-  if (msg === prefix + 'USERSTATS') {
-    message.channel.send('Olet lähettänyt **' + userData[sender.id].messagesSent + '** viestiä!')
-  }
-    
   if (msg === prefix + 'VERSION') {
-    message.channel.send('**Version** \nMixerBot 3.0.2 \n(Last update 2.5.2018)')
+    message.channel.send('**Version** \nMixerBot 3.0.4_BETA \n(Last update 29.11.2018, Updater: Mixerboy24)')
   }
+
+
+
+      //userData.json lukemis komento 
+  //if (msg === prefix + 'USERSTATS') {
+  //  message.channel.send('Olet lähettänyt **' + userData[sender.id].messagesSent + '** viestiä!')
+  // }
 
   
-  //Viestien poisto komento
-if (msg.startsWith(prefix + 'PURGE')) {
-   
-    async function purge() {
-      message.delete();
-
-      if (!message.member.roles.find('name', '**BOT ADMIN ROLE (example Admin)**')) {
-        message.channel.send('Ylläpidon komento :3 Hih :) ');
-        return;
-      }
- 
-      if (isNaN(args[0])) {
-        message.channel.send('Montako viestiä haluat poistaa?  \n Esimerkki: ' + prefix + 'purge 3');
-        return;
-      }
-
-      var fetched = await message.channel.fetchMessages({limit: args[0]});
-      console.log(fetched.size +  ' Viestit löydetty. Poistetaan . . .' );
-
-      message.channel.bulkDelete(fetched)
-        .catch(error => message.channel.send('Virhe: ${error}'));
-    }
-
-    purge();
 
 
-  }
-
-  //MixerBot userDatan kerääminen ja ilmoittamis komento
-
-
-
+  //MixerBot userDatan kerääminen
 
      //käyttäjä kenen data kirjotetaan data tiedostoon
   if (!userData[sender.id]) userData[sender.id] = {
-    messagesSent: 0
+    messagesSent: 0 
+
   }
+
      
   userData[sender.id].messagesSent++;
 
@@ -102,38 +80,19 @@ if (msg.startsWith(prefix + 'PURGE')) {
 
   });
 
-  //MixerBot poistaa viestin jos se ei kuulu sille kanavalle
-   
  
- 
-  //Kielletyt sanat (testi)
-
-  if (msg.includes('HOMO')) {
-    message.delete();
-    message.author.send('Kielletty sana :( ethän jatkossa käytä näitä sanoja, ne voivat loukata jotakin')
+  //Uusi henkilö tulee palvelimelle tai lähtee palvelimelta
+  bot.on('guildMemberAdd', member => {
+    console.log('Käyttäjä ' + member.user.username + ' liityi juuri palvelimelle.')
   
-  }
-
-
-
+  
+   member.guild.channels.get('513445827641999371').send('**' + member.user.username + '**, Tervetuloa Miksaaja Cityyn. Muista lukea' + message.guild.channels.find(channel => channel.name === 'tervetuloa') + ' ja kerro jotain että saat Jäsen roolin. :slight_smile: ');
+  
   });
 
-//Uusi henkilö tulee palvelimelle tai lähtee palvelimelta
-bot.on('guildMemberAdd', member => {
-  console.log('User ' + member.user.username + ' liityi juuri palvelimelle.')
-
-
-  member.guild.channels.get('429695546878590976').send('**' + member.user.username + '**, Tervetuloa Miksaaja cityyn! Kerro jotain niin poliisit tarkastavat sinut ja antavat leimat että pääset pidemmälle kaupunkiin');
-  
-});
-
-bot.on('guildMemberRemove', member => {
-
-  member.guild.channels.get('429695546878590976').send('**' + member.user.username + '**, poistui Miksaaja citystä.');
 
 });
 
 //Mixerbotin Discord-apin avain. 
 Bot.login('Token')
-client.login('Token');
-  // Dev: (C)Mixerboy24Tech https://www.mixerboy24.fi Discord: https://discord.gg/sFyFf4n
+// Dev: (C)Mixerboy24Tech https://www.mixerboy24.fi Discord: https://discord.gg/sFyFf4n
