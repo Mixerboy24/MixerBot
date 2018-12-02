@@ -52,7 +52,10 @@ bot.on('message', message => {
   if (msg === prefix + 'VERSION') {
     message.channel.send('**Version** \nMixerBot 3.0.4_BETA \n(Last update 29.11.2018, Updater: Mixerboy24)')
   }
-
+  
+  if (msg === prefix + 'CONFIRM') {
+    message.member.addRole('513445707475058701')
+  }
 
 
       //userData.json lukemis komento 
@@ -81,12 +84,12 @@ bot.on('message', message => {
   });
 
  
-  //Uusi henkilö tulee palvelimelle tai lähtee palvelimelta
+  //Uusi henkilö tulee palvelimelle, #aula kanava
   bot.on('guildMemberAdd', member => {
     console.log('Käyttäjä ' + member.user.username + ' liityi juuri palvelimelle.')
   
   
-   member.guild.channels.get('513445827641999371').send('**' + member.user.username + '**, Tervetuloa Miksaaja Cityyn. Muista lukea' + message.guild.channels.find(channel => channel.name === 'tervetuloa') + ' ja kerro jotain että saat Jäsen roolin. :slight_smile: ');
+   member.guild.channels.get('513445827641999371').send('**' + member.user.username + '**, Tervetuloa Miksaaja Cityyn. Muista lukea' + message.guild.channels.find(channel => channel.name === 'tervetuloa') + ' "_confirm" komennolla saat jäsen roolin. :slight_smile:');
   
   });
 
@@ -95,4 +98,4 @@ bot.on('message', message => {
 
 //Mixerbotin Discord-apin avain. 
 Bot.login('Token')
-// Dev: (C)Mixerboy24Tech https://www.mixerboy24.fi Discord: https://discord.gg/sFyFf4n
+// Dev: (C)Mixerboy24Tech https://www.mixerboy24.fi Discord: https://bit.ly/MiksaajaCity
