@@ -10,10 +10,10 @@ Discord.js: npm install discord.js
 Discord.js voice: npm install discord.js node-opus  
   
   
-Contact: Mixerboy24#0024 // contact@mixerboy24.fi
+Contact: Mixerboy24#4171 // contact@mixerboy24.fi
 
-bugs:   
-
+Bugs:
+- Delete log and joining message spam.
 
 New things:   
 - Auto role   
