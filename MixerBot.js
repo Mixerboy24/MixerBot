@@ -98,4 +98,4 @@ bot.on('message', message => {
 
 //Mixerbotin Discord-apin avain. 
 Bot.login('Token')
-// Dev: (C)Mixerboy24Tech https://www.mixerboy24.fi Discord: https://bit.ly/MiksaajaCity
+// Dev: (C)Mixerboy24Tech https://www.mixerboy24.fi Discord: https://mixerboy24.fi/discord/
