@@ -26,7 +26,7 @@ bot.on('message', message => {
   var cont = message.content.slice(prefix.length).split(' ');
   var args = cont.slice(1);
 
-  if (sender.id === '429702143923060747') {
+  if (sender.id === '513468676934991873') {
     return;
   }
 
@@ -52,11 +52,10 @@ bot.on('message', message => {
   if (msg === prefix + 'VERSION') {
     message.channel.send('**Version** \nMixerBot 3.0.4_BETA \n(Last update 29.11.2018, Updater: Mixerboy24)')
   }
-  
+
   if (msg === prefix + 'CONFIRM') {
     message.member.addRole('513445707475058701')
   }
-
 
       //userData.json lukemis komento 
   //if (msg === prefix + 'USERSTATS') {
@@ -83,18 +82,21 @@ bot.on('message', message => {
 
   });
 
- 
-  //Uusi henkilö tulee palvelimelle, #aula kanava
-  bot.on('guildMemberAdd', member => {
-    console.log('Käyttäjä ' + member.user.username + ' liityi juuri palvelimelle.')
-  
-  
-   member.guild.channels.get('513445827641999371').send('**' + member.user.username + '**, Tervetuloa Miksaaja Cityyn. Muista lukea' + message.guild.channels.find(channel => channel.name === 'tervetuloa') + ' "_confirm" komennolla saat jäsen roolin. :slight_smile:');
-  
-  });
-
-
 });
+
+bot.on('guildMemberAdd', member => {
+  console.log('Käyttäjä ' + member.user.username + ' liityi juuri palvelimelle.')
+
+
+ member.guild.channels.get('513445827641999371').send('**' + member.user.username + '**, Tervetuloa Miksaaja Cityyn. Muista lukea Tervetuloa kanava. "_confirm" komennolla saat jäsen roolin. :slight_smile: ');
+    
+});
+
+bot.on("messageDelete", (messageDelete) => {
+  messageDelete.guild.channels.get('516292915362791434').send(`The message : "${messageDelete.content}" by ${messageDelete.author.tag} was deleted.`)
+  
+ });
+
 
 //Mixerbotin Discord-apin avain. 
 Bot.login('Token')
