@@ -50,11 +50,12 @@ bot.on('message', message => {
   }
 
   if (msg === prefix + 'VERSION') {
-    message.channel.send('**Version** \nMixerBot 3.0.4_BETA \n(Last update 29.11.2018, Updater: Mixerboy24)')
+    message.channel.send('**Version** \nMixerBot 3.0.4_BETA \n(Last update 09.11.2018, Updater: Mixerboy24)')
   }
 
   if (msg === prefix + 'CONFIRM') {
     message.member.addRole('513445707475058701')
+    console.log(member.user.username + 'Lisätty Jäsen rooli');
   }
 
       //userData.json lukemis komento 
