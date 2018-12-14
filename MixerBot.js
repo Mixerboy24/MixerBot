@@ -55,7 +55,7 @@ bot.on('message', message => {
 
   if (msg === prefix + 'CONFIRM') {
     message.member.addRole('513445707475058701')
-    console.log(member.user.username + 'Lisätty Jäsen rooli');
+    
   }
 
       //userData.json lukemis komento 
