@@ -14,8 +14,7 @@ Contact: Mixerboy24#4171 // contact@mixerboy24.fi
 
 Bugs:
 
-New things:   
-- Auto role   
+New things:      
 - Automatic Ban,Kick and warning message  
 - Announces server staff that,a new member has joined <@tag e.g @staff @admin> [Coming Next Beta update]
 - Twitch stream notification
