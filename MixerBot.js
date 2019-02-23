@@ -98,6 +98,13 @@ bot.on("messageDelete", (messageDelete) => {
   
  });
 
+bot.on('guildMemberRemove', member => {
+
+  member.guild.channels.get('513470236037480480').send('**' + member.user.username + '**, Lähti serveriltä :cry: ');
+
+});
+
+
 
 //Mixerbotin Discord-apin avain. 
 Bot.login('Token')
