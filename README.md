@@ -6,16 +6,15 @@ Node.js
 Text editor (Visual Studio Code / Notepad++ etc)  
   
 Packages:  
-Discord.js: npm install discord.js  
-Discord.js voice: npm install discord.js node-opus  
+Discord.js: npm install discord.js   
   
-  
-Contact: Mixerboy24#4171 // contact@mixerboy24.fi
+Contact: Mixerboy24#0024 // contact@mixerboy24tech.fi 
 
 Bugs:
 
 New things:      
 - Automatic Ban,Kick and warning message  
-- Announces server staff that,a new member has joined <@tag e.g @staff @admin> [Coming Next Beta update]
+- Announces server staff that,a new member has joined <@tag e.g @staff @admin>
 - Twitch stream notification
+
 
