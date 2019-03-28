@@ -2,18 +2,19 @@
 var Discord = require('discord.js');
 var fs = require('fs');
 var bot = new Discord.Client();
-
+var snekfetch = require('snekfetch');
 //Userdatan määritys /Storage/userData.json tiedostoon
 
 var userData = JSON.parse(fs.readFileSync('Storage/userData.json', 'utf8'));
 
 
+
 bot.on('ready', () => {
   console.log('MixerBot on yhdistetty serverille')
 
-  bot.user.setStatus('Online')
+  bot.user.setStatus('dnd')
 
-  bot.user.setGame('_help | MixerBot 3.0.4_BETA')
+  bot.user.setGame('_help | MixerBot 4.0_BETA')
 });
 
 //Mixerbotin määritykset.
@@ -42,7 +43,7 @@ bot.on('message', message => {
   }
 
   if (msg === prefix + 'HELP') {
-    message.channel.send('**MixerBotin komennot** \n**_ping** -- kertoo onko botti paikalla ja antaa server datan \n**_keksi** -- Antaa keksin \n**_rickroll** -- Tarviiko edes selventää? :D \n**_userstats** -- Kertoo montako viestiä olet lähettänyt palvelimella (29.11.2018 alkaen) \n**_version** -- Kertoo Botin version \n*Ylläpito komennot* \n**_purge** -- poistaa viestejä (esim: _purge 2) \n**Dev:** Mixerboy24Tech')
+    message.channel.send('**MixerBotin komennot** \n**_ping** -- kertoo onko botti paikalla ja antaa server datan \n**_keksi** -- Antaa keksin \n**_rickroll** -- Tarviiko edes selventää? :D \n**_userstats** -- Kertoo montako viestiä olet lähettänyt palvelimella (29.11.2018 alkaen) \n**_version** -- Kertoo Botin version \n*Ylläpito komennot* \n**_some** -- Sosiaaliset mediat \n**Dev:** Mixerboy24Tech')
   }
 
   if (msg === prefix + 'RICKROLL') {
@@ -50,18 +51,26 @@ bot.on('message', message => {
   }
 
   if (msg === prefix + 'VERSION') {
-    message.channel.send('**Version** \nMixerBot 3.0.4_BETA \n(Last update 09.11.2018, Updater: Mixerboy24)')
+    message.channel.send('**Version** \nMixerBot 3.0.4_BETA \n(Last update 29.11.2018, Updater: Mixerboy24)')
   }
+
+  if (msg === prefix + 'SOME') {
+    message.channel.send('**Somet** \n Twitter: <https://www.twitter.com/Mb24official> \n Youtube: <https://www.youtube.com/c/Mixerboy24> \n Twitch: <https://www.twitch.tv/Mixerboy24> \n Facebook: <https://www.facebook.com/Mixerboy24Official> \n Instagram: <https://www.instagram.com/Mixerboy24> \n Steam: <https://steamcommunity.com/groups/Mixerboy24> \n LinkedIn: <https://www.linkedin.com/in/Mixerboy24/>')
+}
+
+  if (msg === prefix + 'BUGI') {
+    message.channel.send(' Minussa on ongelma \n Jokin virhe ohjelmoinnissa \n Puutteita koodissa \n **Jos huomaat Bugin minussa. Raportoi se Githubiin tai Mixerboy24#0024 ')
+}
 
   if (msg === prefix + 'CONFIRM') {
     message.member.addRole('513445707475058701')
-    
   }
 
-      //userData.json lukemis komento 
-  //if (msg === prefix + 'USERSTATS') {
-  //  message.channel.send('Olet lähettänyt **' + userData[sender.id].messagesSent + '** viestiä!')
-  // }
+
+    //userData.json lukemis komento 
+ if (msg === prefix + 'USERSTATS') {
+   message.channel.send('Olet lähettänyt **' + userData[sender.id].messagesSent + '** viestiä!')
+ }
 
   
 
@@ -89,7 +98,7 @@ bot.on('guildMemberAdd', member => {
   console.log('Käyttäjä ' + member.user.username + ' liityi juuri palvelimelle.')
 
 
- member.guild.channels.get('513445827641999371').send('**' + member.user.username + '**, Tervetuloa Miksaaja Cityyn. Muista lukea Tervetuloa kanava. "_confirm" komennolla saat jäsen roolin. :slight_smile: ');
+ member.guild.channels.get('513445827641999371').send('**' + member.user.username + '**, Tervetuloa Miksaaja Cityyn. Muista lukea Tervetuloa kanava. "_confirm" komennolla saat jäsen roolin. :slight_smile: \n**Aulaan ei linkkejä eikä kuvia. muut kanavat on niitä varten!** ');
     
 });
 
@@ -100,9 +109,10 @@ bot.on("messageDelete", (messageDelete) => {
 
 bot.on('guildMemberRemove', member => {
 
-  member.guild.channels.get('513470236037480480').send('**' + member.user.username + '**, Lähti serveriltä :cry: ');
+  member.guild.channels.get('51516292915362791434').send('**' + member.user.username + '**, Lähti serveriltä :cry: ');
 
 });
+
 
 
 
