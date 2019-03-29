@@ -1,3 +1,4 @@
+//MixerTechBOT lähdekoodi. 
 var Discord = require('discord.js');
 var fs = require('fs');
 var bot = new Discord.Client();
@@ -32,7 +33,7 @@ bot.on('message', message => {
   }
 
   if (msg === prefix + 'SOME') {
-      message.channel.send('Twitter: <https://www.twitter.com/Mixerboy24Tech> \n Youtube: <https://www.youtube.com/channel/UChl3Vb82N54dkX8-PHJFIhw> \n Twitch: <https://www.twitch.tv7Mixerboy24Tech> \n Facebook <https://www.facebook.com/Mixerboy24Tech>')
+      message.channel.send('Twitter: <https://www.twitter.com/Mixerboy24Tech> \n Youtube: <https://www.youtube.com/channel/UChl3Vb82N54dkX8-PHJFIhw> \n Twitch: <https://www.twitch.tv/Mixerboy24Tech> \n Facebook <https://www.facebook.com/Mixerboy24Tech>')
   }
 
   if (msg === prefix + 'HELP') {
@@ -40,18 +41,16 @@ bot.on('message', message => {
   }
 
 
-  bot.on('guildMemberAdd', member => {
-    console.log('Käyttäjä ' + member.user.username + ' liityi juuri palvelimelle.')
-  
-  
-   member.guild.channels.get('513470236037480480').send('**' + member.user.username + '**, Tervetuloa Miksaaja Cityyn. Muista lukea' + message.guild.channels.find(channel => channel.name === 'tervetuloa') + ' "_confirm" komennolla saat jäsen roolin. :slight_smile: ');
-      if (send._maxListeners)
-    send.setMaxListeners(process._maxListeners + 1);
-      
-  });
-
-
 
 });
+
+bot.on('guildMemberAdd', member => {
+  console.log('Käyttäjä ' + member.user.username + ' liityi juuri palvelimelle.')
+
+
+ member.guild.channels.get('516089211137556480').send('**' + member.user.username + '**Welcome Mixerboy24Tech Discord server. Please Read #rules channel ');
+    
+});
+
 
 bot.login('TOKEN')
