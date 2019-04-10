@@ -55,7 +55,7 @@ bot.on('message', message => {
   }
 
   if (msg === prefix + 'SOME') {
-    message.channel.send('**Somet** \n Twitter: <https://www.twitter.com/Mb24official> \n Youtube: <https://www.youtube.com/c/Mixerboy24> \n Twitch: <https://www.twitch.tv/Mixerboy24> \n Facebook: <https://www.facebook.com/Mixerboy24Official> \n Instagram: <https://www.instagram.com/Mixerboy24> \n Steam: <https://steamcommunity.com/groups/Mixerboy24> \n LinkedIn: <https://www.linkedin.com/in/Mixerboy24/>')
+    message.channel.send('**Somet** \n Twitter: <https://www.twitter.com/Mb24official> \n Youtube: <https://www.youtube.com/c/Mixerboy24> \n Twitch: <https://www.twitch.tv/Mixerboy24> \n Facebook: <https://www.facebook.com/Mixerboy24Official> \n Instagram: <https://www.instagram.com/Mixerboy24> \n Steam: <https://steamcommunity.com/groups/Mixerboy24> \n LinkedIn: <https://www.linkedin.com/in/Mixerboy24/> \n Reddit: <https://www.reddit.com/r/Mixerboy24>')
 }
 
   if (msg === prefix + 'BUGI') {
