@@ -39,7 +39,7 @@ bot.on('message', message => {
   }
 
   if (msg === prefix + 'PING') {
-    message.channel.send('**MixerBot info** \n*Network* ```css\n OK``` \n*Database* ```\n Error: MySQL login error``` \n*Log* ```css\n OK``` \n*Palvelin:* ```TehomyllyV3 (Windows 10 Pro (Insider program))```')
+    message.channel.send('**MixerBot info** \n*Network* ```css\n OK``` \n*Database* ```\n Error: MySQL login error``` \n*Log* ```css\n OK``` \n*Palvelin:* ```Mb24Tech Webserver1 (Linux Ubuntu Server 18.04LTS)```')
   }
 
   if (msg === prefix + 'HELP') {
@@ -51,11 +51,11 @@ bot.on('message', message => {
   }
 
   if (msg === prefix + 'VERSION') {
-    message.channel.send('**Version** \nMixerBot 3.0.4_BETA \n(Last update 29.11.2018, Updater: Mixerboy24)')
+    message.channel.send('**Version** \nMixerBot 4.0_BETA \n(Last update 29.03.2019, Updater: Mixerboy24#0024)')
   }
 
   if (msg === prefix + 'SOME') {
-    message.channel.send('**Somet** \n Twitter: <https://www.twitter.com/Mb24official> \n Youtube: <https://www.youtube.com/c/Mixerboy24> \n Twitch: <https://www.twitch.tv/Mixerboy24> \n Facebook: <https://www.facebook.com/Mixerboy24Official> \n Instagram: <https://www.instagram.com/Mixerboy24> \n Steam: <https://steamcommunity.com/groups/Mixerboy24> \n LinkedIn: <https://www.linkedin.com/in/Mixerboy24/> \n Reddit: <https://www.reddit.com/r/Mixerboy24>')
+    message.channel.send('**Somet** \n Twitter: <https://www.twitter.com/Mb24official> \n Youtube: <https://www.youtube.com/c/Mixerboy24> \n Twitch: <https://www.twitch.tv/Mixerboy24> \n Facebook: <https://www.facebook.com/Mixerboy24Official> \n Instagram: <https://www.instagram.com/Mixerboy24> \n Steam: <https://steamcommunity.com/groups/Mixerboy24> \n LinkedIn: <https://www.linkedin.com/in/Mixerboy24/>')
 }
 
   if (msg === prefix + 'BUGI') {
@@ -66,6 +66,17 @@ bot.on('message', message => {
     message.member.addRole('513445707475058701')
   }
 
+  if (msg === prefix + 'JEREONPARAS') {
+     message.channel.send('Olen kyllä erimieltä asiasta. Vitsin Jere')
+}
+
+  if (msg === prefix + 'PIINIONPARAS') {
+     message.channel.send('Ihme Piini. :3 Mukava ja hassu. Ota kukka :rose:')
+}
+
+if (msg === prefix + 'MIXERONPARAS') {
+  message.channel.send('Pah. Mixeri paras. :joy: Missä unessa ja kenen?')
+}
 
     //userData.json lukemis komento 
  if (msg === prefix + 'USERSTATS') {
@@ -116,6 +127,8 @@ bot.on('guildMemberRemove', member => {
 
 
 
-//Mixerbotin Discord-apin avain. 
+
+
+//Discord-apin avain. 
 Bot.login('Token')
-// Dev: (C)Mixerboy24Tech https://www.mixerboy24.fi Discord: https://mixerboy24.fi/discord/
+// Dev: (C)Mixerboy24Tech https://www.mixerboy24tech.fi Discord: https://mixerboy24.fi/discord/
