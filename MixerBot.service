@@ -1,0 +1,12 @@
+[Unit]
+Description=MixerBot (c)Mixerboy24Tech
+
+[Service]
+WorkingDirectory=/home/MixerBot/Bot/MixerBot
+User=root
+Type=forking
+ExecStart=/usr/bin/tmux new-session -s MixerBOT -d '/bin/sh Mixerbot.sh'
+ExecStop=/bin/sleep 2
+
+[Install]
+WantedBy=multi-user.target
