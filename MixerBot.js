@@ -66,6 +66,11 @@ bot.on('message', message => {
     message.member.addRole('513445707475058701')
   }
 
+  if (msg === prefix + 'NET9') {
+	message.channel.send('Net9 affiliate linkki: http://bit.ly/mb24net9 \n  Net9 alennuskoodi: Mixerboy24')
+}
+
+  
   if (msg === prefix + 'JEREONPARAS') {
      message.channel.send('Olen kyllä erimieltä asiasta. Vitsin Jere')
 }
