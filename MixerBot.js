@@ -119,8 +119,12 @@ bot.on('guildMemberAdd', member => {
 });
 
 bot.on("messageDelete", (messageDelete) => {
-  messageDelete.guild.channels.get('516292915362791434').send(`The message : "${messageDelete.content}" by ${messageDelete.author.tag} was deleted.`)
-  
+  if (!messageDelete.author.bot) {
+
+  messageDelete.guild.channels.get('516292915362791434').send(`Viesti : "${messageDelete.content}" käyttäjältä ${messageDelete.author.tag} on poistettu.`);
+
+  }
+
  });
 
 bot.on('guildMemberRemove', member => {
