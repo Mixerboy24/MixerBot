@@ -69,7 +69,7 @@ if (command === 'confirm') {
   }
 } else {
 
-    message.channel.send('Komentoa ei löytynyt!')
+    message.channel.send()
   }  
 });
 
