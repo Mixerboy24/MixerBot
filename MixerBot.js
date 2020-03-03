@@ -1,8 +1,8 @@
 //MixerBotin lähdekoodi
-var Discord = require('discord.js');
-var fs = require('fs');
-var bot = new Discord.Client();
-var {token} = require('./config.json');
+const Discord = require('discord.js');
+const fs = require('fs');
+const bot = new Discord.Client();
+const {token} = require('./config.json');
 
 
   
@@ -11,7 +11,7 @@ bot.on('ready', () => {
 
   bot.user.setStatus('dnd')
 
-  bot.user.setGame('_help | Mixerbot 5.2.1')
+  bot.user.setActivity('_help | Mixerbot 5.2.2')
 });
 
 //MixerBotin komennot.
@@ -22,23 +22,29 @@ bot.on("message", message => {
   const prefix = '_'
   if (message.content.indexOf(prefix) !== 0) return;
 
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+const args = message.content
+    .slice(prefix.length)
+    .trim()
+    .split(/ +/g);
   const command = args.shift().toLowerCase();
 
   if (command ==='version') {
     message.channel.send('**Version** \nMiksaaja City Discord BOT 5.2.1 \n(Last update 2.3.2020)')
   } else
   if (command ==='creator') {
-      message.channel.send('Bot creators: Atte "Mixerboy24" Oksanen \n Jami "Doacola" Lohilahti')
+      message.channel.send('Bot creators: \n Atte "Mixerboy24" Oksanen \n Jami "Doacola" Lohilahti')
   } else
-  if (command ==='help') {
-      message.channel.send('**Komentoni:** \n !version = Kertoo missä versiossa olen \n !creator = Minun rakentaja ja devi :3 \n !kutsu = Antaa palvelimen kutsulinkin \n !help = Tämä mitä luet juuri :joy:')
+ if (command ==='help') {
+      message.channel.send('**Komentoni:** \n _version = Kertoo missä versiossa olen \n _creator = Minun rakentaja ja devi :3 \n _kutsu = Antaa palvelimen kutsulinkin \n _github = Minun lähdekoodi \n _help = Tämä mitä luet juuri :joy:')
   } else
-  if (command ==='Masto') {
+  if (command ==='masto') {
     message.channel.send('Masto? Mä sulle mastot näytän!\nSiinä on masto! https://cdn.mb24.fi/Kuvat/masto.jpg')
   } else
   if (command ==="kutsu") {
     message.channel.send("<https://discord.mixerboy24.fi>")
+  } else
+  if (command ==="github") {
+    message.channel.send("<https://github.com/Mixerboy24Tech/MixerBot>")
   } else
  
   if (command === 'wl') {
@@ -61,7 +67,10 @@ if (command === 'confirm') {
     message.channel.send('Sinulle on annettu Jäsen rooli!')
     console.log('Annettu jäsen rooli')
   }
-}
+} else {
+
+    message.channel.send('Komentoa ei löytynyt!')
+  }  
 });
 
 
@@ -69,35 +78,48 @@ if (command === 'confirm') {
 bot.on('guildMemberAdd', member => {
   console.log('User ' + member.user.username + ' liityi juuri palvelimelle.')
 
-
-  member.guild.channels.get('513445827641999371').send('**' + member.user.username + '**, Tervetuloa Miksaaja Cityyn. Muista lukea Tervetuloa kanava. "_confirm" komennolla saat jäsen roolin. :slight_smile: \n**Aulaan ei linkkejä eikä kuvia. muut kanavat on niitä varten!** ');
-
+    member.guild.channels
+    .get("513445827641999371")
+    .send(
+      "**" +
+        member.user.username +
+        '**, Tervetuloa Miksaaja Cityyn. Muista lukea Tervetuloa kanava. "_confirm" komennolla saat jäsen roolin. :slight_smile: \n**Aulaan ei linkkejä eikä kuvia. muut kanavat on niitä varten!** '
+    );
 });
 
-bot.on('guildMemberRemove', member => {
-
-  member.guild.channels.get('516292915362791434').send('**' + member.user.username + '**, Lähti serveriltä :cry: ');
-
+bot.on("guildMemberRemove", member => {
+  member.guild.channels
+    .get("516292915362791434")
+    .send("**" + member.user.username + "**, Lähti serveriltä :cry: ");
 });
 
-bot.on("messageDelete", (messageDelete) => {
+bot.on("messageDelete", messageDelete => {
   if (!messageDelete.author.bot) {
-
-  messageDelete.guild.channels.get('516292915362791434').send(`Viesti : "${messageDelete.content}" käyttäjältä ${messageDelete.author.tag} on poistettu.`);
-
+    messageDelete.guild.channels
+      .get("516292915362791434")
+      .send(
+        `Viesti : "${messageDelete.content}" käyttäjältä ${messageDelete.author.tag} on poistettu.`
+      );
   }
-
- });
+});
 
 
  //Linkin poisto
- bot.on('message', (message) => { 
-  if (message.content.includes('discord.gg/'||'discordapp.com/invite/' || 'pornhub.com/')) { 
-    message.delete()
-      .then(message.channel.send('Linkki poistettu:\n**Ei kutsulinkkejä tänne! Lue säännöt uudelleen**'))
+bot.on("message", message => {
+  if (
+    message.content.includes(
+      "discord.gg/" || "discordapp.com/invite/" || "pornhub.com/"
+    )
+  ) {
+    message
+      .delete()
+      .then(
+        message.channel.send(
+          "Linkki poistettu:\n**Ei kutsulinkkejä tänne! Lue säännöt uudelleen**"
+        )
+      );
   }
 });
-
 
 bot.login(token)
 // Dev: (C)Mixerboy24Tech https://www.mixerboy24.fi Discord: Mixerboy24#0024
