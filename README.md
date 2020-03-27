@@ -6,8 +6,8 @@ Node.js V10 ->
 Tekstin käsittelyohjelma (Visual Studio Code / Notepad++ tai vastaava)  
   
 Paketit:  
-Discord.js: npm i discord.js
-Discord AntiSpam: npm i discord-anti-spam
+Discord.js: npm i discord.js   
+Discord AntiSpam: npm i discord-anti-spam    
 
 **Miten MixerBot käynnistetään? (Linux)**
 
