@@ -2,16 +2,39 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 const bot = new Discord.Client();
+const AntiSpam = require('discord-anti-spam')
 const {token} = require('./config.json');
+const {version} = require('./config.json');
+
+//AntiSpam API
+
+const antiSpam = new AntiSpam({
+  warnThreshold: 5,
+  kickThreshold: 15, 
+  maxInterval: 2000, 
+  warnMessage: '{@user}, ei spämmitä.', 
+  kickMessage: '**{user_tag}** on erotettu palvelimelta toistuvan spämmin takia.', 
+  banMessage: '**{user_tag}** on annettu porttikielto palvelimelle toistuvasta spämmistä.', 
+  maxDuplicatesWarning: 5,
+  maxDuplicatesKick: 15, 
+  maxDuplicatesBan: 20, 
+  exemptPermissions: [ 'ADMINISTRATOR'], 
+  ignoreBots: true, 
+  verbose: true, 
+  ignoredUsers: [], 
+});
+
+bot.on('message', (message) => antiSpam.message(message));
 
 
+//Discord API
   
 bot.on('ready', () => {
   console.log('Mixerbot is Online')
 
   bot.user.setStatus('dnd')
 
-  bot.user.setActivity('_help | Mixerbot 5.2.2')
+  bot.user.setActivity('_help | Mixerbot ' + (version) +'')
 });
 
 //MixerBotin komennot.
@@ -29,13 +52,13 @@ const args = message.content
   const command = args.shift().toLowerCase();
 
   if (command ==='version') {
-    message.channel.send('**Version** \nMiksaaja City Discord BOT 5.2.1 \n(Last update 2.3.2020)')
+    message.channel.send('**Version** \nMiksaaja City Discord BOT ' + (version) +'\n(Last update 3.3.2020)')
   } else
   if (command ==='creator') {
       message.channel.send('Bot creators: \n Atte "Mixerboy24" Oksanen \n Jami "Doacola" Lohilahti')
   } else
  if (command ==='help') {
-      message.channel.send('**Komentoni:** \n _version = Kertoo missä versiossa olen \n _creator = Minun rakentaja ja devi :3 \n _kutsu = Antaa palvelimen kutsulinkin \n _github = Minun lähdekoodi \n _help = Tämä mitä luet juuri :joy:')
+      message.channel.send('**Komentoni:** \n _version = Kertoo missä versiossa olen \n _creator = Minun rakentaja ja devi :3 \n _kutsu = Antaa palvelimen kutsulinkin \n _github = Minun lähdekoodi \n _help = Tämä mitä luet juuri :joy: \n _wl <Minecraft nimi> = MixerCraftin whitelistille pääsy (#mb24-minecraft-server)')
   } else
   if (command ==='masto') {
     message.channel.send('Masto? Mä sulle mastot näytän!\nSiinä on masto! https://cdn.mb24.fi/Kuvat/masto.jpg')
@@ -73,6 +96,9 @@ if (command === 'confirm') {
   }  
 });
 
+// TwitchAPI 
+
+
 
 //Uusi henkilö tulee palvelimelle tai lähtee palvelimelta | Myös viestin poito logi. 
 bot.on('guildMemberAdd', member => {
@@ -83,7 +109,7 @@ bot.on('guildMemberAdd', member => {
     .send(
       "**" +
         member.user.username +
-        '**, Tervetuloa Miksaaja Cityyn. Muista lukea Tervetuloa kanava. "_confirm" komennolla saat jäsen roolin. :slight_smile: \n**Aulaan ei linkkejä eikä kuvia. muut kanavat on niitä varten!** '
+        '**, Tervetuloa Miksaaja Cityyn. Muista lukea Tervetuloa kanava. "_confirm" komennolla saat jäsen roolin. :slight_smile: \n**Aulaan ei linkkejä eikä kuvia. Muut kanavat on niitä varten!** '
     );
 });
 
@@ -92,6 +118,7 @@ bot.on("guildMemberRemove", member => {
     .get("516292915362791434")
     .send("**" + member.user.username + "**, Lähti serveriltä :cry: ");
 });
+
 
 bot.on("messageDelete", messageDelete => {
   if (!messageDelete.author.bot) {
@@ -108,7 +135,7 @@ bot.on("messageDelete", messageDelete => {
 bot.on("message", message => {
   if (
     message.content.includes(
-      "discord.gg/" || "discordapp.com/invite/" || "pornhub.com/"
+      "discord.gg/" || "discordapp.com/invite/"
     )
   ) {
     message
@@ -118,6 +145,23 @@ bot.on("message", message => {
           "Linkki poistettu:\n**Ei kutsulinkkejä tänne! Lue säännöt uudelleen**"
         )
       );
+  }
+});
+
+// "haitallisen" viestin poisto
+bot.on("message", message => {
+  if (
+    message.content.includes(
+      "" || "" || "" 
+    )
+  ) {
+    message
+       .delete()
+       .then(
+         message.channel.send(
+           "Viesti poistettu: Pidetään keskustelu asiallisena"
+         )
+       );
   }
 });
 
