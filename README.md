@@ -2,11 +2,12 @@
 MixerBot on MiksaajaCity Discord servun botti. (C) Mixerboy24Tech
 
 Ohjelmisto
-Node.js  
+Node.js V10 ->    
 Tekstin käsittelyohjelma (Visual Studio Code / Notepad++ tai vastaava)  
   
 Paketit:  
-Discord.js: npm install discord.js   
+Discord.js: npm i discord.js
+Discord AntiSpam: npm i discord-anti-spam
 
 **Miten MixerBot käynnistetään? (Linux)**
 
@@ -27,7 +28,6 @@ Yhteydenotto: Mixerboy24#0024 // contact@mixerboy24tech.fi
 Bugit:
 
 Ideat:      
-- Automaattinen Banni, Kick ja varoitus. 
 - Twitch striimi ilmoitukset.
 
 (Lisää ideoita saa ehdotella)
