@@ -33,7 +33,6 @@ sudo systemctl enable MixerBot
 sudo systemctl start MixerBot
 ```
   
-Yhteydenotto: Mixerboy24#0024 // developer@mixerboy24.fi 
 
 ### Vianetsintä ###   
 
@@ -46,3 +45,5 @@ Ideat:
 
 (Lisää ideoita saa ehdotella)
 
+Yhteydenotto: Mixerboy24#0024 // developer@mixerboy24.fi 
+(c) Mixerboy24 Tmi   
