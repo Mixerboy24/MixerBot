@@ -119,14 +119,14 @@ bot.on("guildMemberRemove", member => {
     .send("**" + member.user.username + "**, Lähti serveriltä :cry: ");
 });
 
-
 bot.on("messageDelete", messageDelete => {
   if (!messageDelete.author.bot) {
-    messageDelete.guild.channels
-      .get("516292915362791434")
-      .send(
-        `Viesti : "${messageDelete.content}" käyttäjältä ${messageDelete.author.tag} on poistettu.`
-      );
+    let embed = new Discord.RichEmbed()
+    .setColor(0xFF7200)
+    .addField(`${messageDelete.author.tag} viesti poistettu`, `${messageDelete.content}`)
+   messageDelete.guild.channels
+     .get("516292915362791434")
+      .send(embed);
   }
 });
 
