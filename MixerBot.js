@@ -69,19 +69,11 @@ const args = message.content
   if (command ==="github") {
     message.channel.send("<https://github.com/Mixerboy24Tech/MixerBot>")
   } else
- 
-  if (command === 'wl') {
-    if (message.member.roles.has('621839114534256671')) {
-        message.channel.send('Olet jo Whitelistillä. Ota yhteyttä @Mixerboy24#0024 asiasta.')
-    } else {
-    const mc_channel = bot.channels.get('684125912467636292');
-    mc_channel.send('whitelist add '+args[0]);
-    message.member.addRole('621839114534256671')
-    message.channel.send( ' ' +args[0] + ' Lisätty MB24MC whitelistille.')
-    console.log('Username ' +args[0] + ' added MB24MC whitelist')
-  }
-}
-
+  if (command =="allsky") {
+    message.channel.send("**Mixerboy24 Allsky** \n", {file: "https://mixerboy24tech.fi/pic/image-resize.jpg"})
+  }else
+    
+    
 if (command === 'confirm') {
     if (message.member.roles.has('513445707475058701')) {
         message.channel.send('Olet jo jäsen! Ota yhteyttä Ylläpitoon jos on ongelmia')
